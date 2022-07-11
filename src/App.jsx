@@ -3,8 +3,6 @@ import "./App.scss"
 import PostView from "./pages/PostView"
 import PostList from "./pages/PostList"
 
-console.log({ API_URL: import.meta.env.VITE_API_BASE_URL })
-
 const App = () => {
   // render posts here
   return (

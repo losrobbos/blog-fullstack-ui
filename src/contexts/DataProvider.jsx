@@ -3,6 +3,7 @@ import { createContext, useEffect, useState } from "react"
 export const DataContext = createContext()
 
 const DataProvider = ({ children }) => {
+
   // DUMMY DATA APPROACH => mirror same structure as on backend routes in your context
   const [posts, setPosts] = useState(
     // 20220425203414
@@ -35,21 +36,6 @@ const DataProvider = ({ children }) => {
       },
     ]
   )
-
-  useEffect(() => {
-    if (!import.meta.env.VITE_API_BASE_URL) {
-      console.log("WARNING: No API URL is set!")
-      console.log("Please provide a URL to an API by creating an .env file")
-      console.log("Easiest: Copy the .env.sample file to .env and replace the URL")
-      return
-    }
-    // grab posts from posts API route and stuff it into our local state
-    fetch(`${import.meta.env.VITE_API_BASE_URL}/posts`)
-      .then((res) => res.json())
-      .then((postsApi) => {
-        setPosts(postsApi)
-      })
-  }, []) // just load posts on FIRST RENDER
 
   const addPost = (postNew) => {
     setPosts([...posts, postNew])
