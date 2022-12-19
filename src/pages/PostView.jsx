@@ -2,12 +2,14 @@ import { useEffect, useState } from "react";
 import Comment from '../components/Comment'
 import IconLike from '../images/thumbs-up.svg'
 import IconDislike from '../images/thumbs-down.svg'
+import { useLocation } from "react-router-dom";
 
 // POST DETAILS view - Full text + comments
 
-const PostPage = ({ location }) => {
+const PostPage = () => {
 
-  const [comments, setComments] = useState([])  
+  const [comments, setComments] = useState([])
+  const location = useLocation()
 
   // receive BLOG post details from router link => stored in location object !
     // location object is either available in props.location or via useLocation() hook
@@ -19,12 +21,12 @@ const PostPage = ({ location }) => {
   // useEffect always run AFTER first render
   useEffect(() => {
 
-    // fetch blog post comments DYNAMICALLY
-    fetch(`${process.env.REACT_APP_API_BASE_URL}/posts/${post._id}/comments`)
-    .then(res => res.json())
-    .then(commentsApi => {
-      setComments( commentsApi )  // => triggers a re-render
-    })
+    // fetch blog post comments DYNAMICALLY    
+    fetch(`${import.meta.env.VITE_API_BASE_URL}/posts/${post._id}/comments`)
+      .then((res) => res.json())
+      .then((commentsApi) => {
+        setComments(commentsApi); // => triggers a re-render
+      });
 
   }, [])
 

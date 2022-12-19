@@ -14,7 +14,7 @@ const Post = ({ post, index = 0 }) => {
         <img alt="avatar" src={`https://source.unsplash.com/150x150/?nature,${index}`} />
       </div>
       <div className="post-title">
-        <Link to={ postLinkData }>{ post.title }</Link>
+        <Link to={ postLinkData.pathname } state={postLinkData.state}>{ post.title }</Link>
       </div>
       <div className="post-author">
         {post.createdAt.substring(0, 10)} by {post.author}

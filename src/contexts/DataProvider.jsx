@@ -5,9 +5,6 @@ export const DataContext = createContext()
 const DataProvider = ({ children }) => {
   // DUMMY DATA APPROACH => mirror same structure as on backend routes in your context
   const [posts, setPosts] = useState(
-    // 20220425203414
-    // https://autodeploy-api.herokuapp.com/posts
-
     [
       {
         _id: "6171303cb58a952fac73f588",
